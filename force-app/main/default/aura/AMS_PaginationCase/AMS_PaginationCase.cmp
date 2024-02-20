@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride,forceCommunity:availableForAllPageTypes" access="global" controller="AMS_PaginationOffsetCase">
+    <aura:attribute name="cases" type="Case[]" />
+    <aura:attribute name="pageNumber" type="Integer" default="0" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <div>
+        <button onclick="{!c.previousPage}" disabled="{!v.pageNumber == 0}">Anterior</button>
+        <button onclick="{!c.nextPage}">Siguiente</button>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Case Number</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.cases}" var="case">
+                <tr>
+                    <td>{!case.CaseNumber}</td>
+                    <td>{!case.Subject}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>
